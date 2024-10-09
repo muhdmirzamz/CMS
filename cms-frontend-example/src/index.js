@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 
 import Login from './routes/Login';
-import Register from './routes/Register';
+import Signup from './routes/Signup';
 import Dashboard from './routes/Dashboard';
 
 import {
@@ -18,8 +18,8 @@ const router = createBrowserRouter([
     element: <Login />,
   },
   {
-    path: "/register",
-    element: <Register />,
+    path: "/signup",
+    element: <Signup />,
   },
   {
     path: "/dashboard",

@@ -8,14 +8,14 @@ const express = require('express')
 
 
 // the old method doesnt work anymore
-// it only works for <firebase v8
+// it only works for < firebase v8
 // we are using firebase v10
 // we are essentially taking the "import" statements and converting them to "require" statements
 // it's from the same docs
 // https://firebase.google.com/docs/auth/web/password-auth#web_2
 
 const { initializeApp } = require('firebase/app')
-const { getAuth, signInWithEmailAndPassword } = require('firebase/auth')
+const { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } = require('firebase/auth')
 
 const app = express()
 
@@ -32,20 +32,36 @@ app.use( (req, res, next) => {
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDO6HDVEAm33kuxMHELfXRgUgOBl8SRJwE",
-  authDomain: "cms-project-ef63e.firebaseapp.com",
-  projectId: "cms-project-ef63e",
-  storageBucket: "cms-project-ef63e.appspot.com",
-  messagingSenderId: "926190340917",
-  appId: "1:926190340917:web:389002fe0930c8a7a51a7c"
+
 };
 
-const firebase = initializeApp(firebaseConfig);
+initializeApp(firebaseConfig);
 
 const port = 9000
 
 app.get('/test', (req, res) => {
     res.send('hi')
+})
+
+
+app.post('/signup', (req, res) => {
+
+  console.log(req.body.username)
+  console.log(req.body.password)
+
+  let email = req.body.username
+  let password = req.body.password
+
+  const auth = getAuth();
+  createUserWithEmailAndPassword(auth, email, password).then(userCredential => {
+    // Signed in 
+    // const user = userCredential.user;
+  }).catch(error => {
+    // const errorCode = error.code;
+    // const errorMessage = error.message;  
+  })
+
+  res.send('signed up')
 })
 
 app.post('/login', (req, res) => {
@@ -67,7 +83,7 @@ app.post('/login', (req, res) => {
     // const errorMessage = error.message;
   });
 
-  res.send('hi')
+  res.send('logged in')
 })
 
 app.listen(port, () => console.log("App listening at https://localhost:${" + port + "}"))

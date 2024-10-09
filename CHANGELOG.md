@@ -1,5 +1,8 @@
 # CHANGELOG
 
+9 October 2024
+- A user can now sign up
+
 1 October 2024
 - Created a Register page
 - Added a link to Register page in Login page
