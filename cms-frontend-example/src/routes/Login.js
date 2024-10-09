@@ -21,7 +21,7 @@ const Login = () => {
     setPassword(event.target.value)
   }
 
-  const onSubmit = () => {
+  const onLogin = () => {
     axios.post('http://localhost:9000/login', {username: username, password: password}).then(res => {
 
       console.log(res)
@@ -44,8 +44,8 @@ const Login = () => {
         <input type='password' value={password} className='tf' onChange={passwordTxtfieldValueChange} />
       </div>
 
-      <input type="button" className="login-btn" onClick={onSubmit} value="Login" />
-      <p>Don't have an account? <a href={`/register`}>Register</a>  </p>
+      <input type="button" className="login-btn" onClick={onLogin} value="Login" />
+      <p>Don't have an account? <a href={`/signup`}>Register</a>  </p>
     </div>
   );
 }
