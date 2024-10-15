@@ -1,0 +1,37 @@
+.dashboard-body {
+    background-color: bisque;
+
+    height: 100vh;
+}
+
+.layered-div {
+    display: flex;
+}
+
+.layer {
+    /* flex: 1; */
+
+    height: 100vh;
+}
+
+.layer-one {
+    flex: 1;
+
+    background-color: aqua;
+}
+
+.layer-two {
+    flex: 3;
+    background-color: red;
+}
+
+.layer-three {
+    flex: 1;
+}
+
+.blogpost-text-area {
+    background-color: aqua;
+
+    width: 20vw;
+    height: 10vh;
+}
