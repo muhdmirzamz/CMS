@@ -32,7 +32,7 @@ app.use( (req, res, next) => {
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-
+  
 };
 
 initializeApp(firebaseConfig);

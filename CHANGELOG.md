@@ -1,5 +1,9 @@
 # CHANGELOG
 
+17 October 2024
+- Text area and Post button CSS is done
+
+
 15 October 2024
 - Dashboard is now divided into 3 layers to prepare for blog post implementation
 

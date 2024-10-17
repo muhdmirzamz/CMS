@@ -1,5 +1,5 @@
 .dashboard-body {
-    background-color: bisque;
+    /* background-color: bisque; */
 
     height: 100vh;
 }
@@ -8,30 +8,77 @@
     display: flex;
 }
 
-.layer {
+/* a class that holds common attributes for every layer */
+.vertical-layer {
     /* flex: 1; */
 
     height: 100vh;
 }
 
-.layer-one {
+.vertical-layer-one {
     flex: 1;
 
-    background-color: aqua;
+    /* background-color: aqua; */
 }
 
-.layer-two {
+.vertical-layer-two {
+    display: flex;
+    flex-direction: column;
+
     flex: 3;
     background-color: red;
 }
 
-.layer-three {
+/* this div houses the divs for text area and button */
+.blogpost-text-area-component-div {
+    display: flex;
     flex: 1;
+    flex-direction: column;
+
+    /* width: 100%; */
+
+    background-color: blue;
+}
+
+.blogpost-text-area-div {
+    display: flex;
+    flex: 2;
+    justify-content: center;
+    align-items: center;
+
+    /* width: 100%; */
+
+    background-color: green;
 }
 
 .blogpost-text-area {
-    background-color: aqua;
+    resize: none;
+    width: 95%;
+    height: 90%;
+}
 
-    width: 20vw;
-    height: 10vh;
+.blogpost-post-button-div {
+    display: flex;
+    flex: 1;
+    justify-content: flex-end;
+    align-items: center;
+
+    background-color: bisque;
+
+    padding-right: 2%;
+}
+
+.post-button {
+    width: 20%;
+    height: 80%;
+}
+
+.blogpost-list-div {
+    flex: 4;
+
+    background-color: green;
+}
+
+.vertical-layer-three {
+    flex: 1;
 }

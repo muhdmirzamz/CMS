@@ -18,23 +18,33 @@ const Dashboard = () => {
         <div className='dashboard-body'>
 
             <div className='layered-div'>
-                <div className='layer layer-one'>
-                    vertical layer one
+                <div className='vertical-layer vertical-layer-one'>
+                    {/* vertical layer one */}
                 </div>
-                <div className='layer layer-two'>
-                    vertical layer two
+                <div className='vertical-layer vertical-layer-two'>
+                    {/* this div houses the divs for text area and button */}
+                    <div className='blogpost-text-area-component-div'>
+                        {/* this div is the parent component for the text area */}
+                        <div className='blogpost-text-area-div'>
+                            <textarea className='blogpost-text-area' value={blogPostText} onChange={blogPostTextValueChanged}>
+                            </textarea>
+                        </div>
+
+                        {/* this div is the parent component for the post button */}
+                        <div className='blogpost-post-button-div'>
+                            <input className='post-button' value='Post' type='button' onClick={postBlogPost} />
+                        </div>
+                    </div>
+                    <div className='blogpost-list-div'>
+                        BLOG POST LIST DIV
+                    </div>
+
                 </div>
-                <div className='layer layer-three'>
-                    vertical layer three
+                <div className='vertical-layer vertical-layer-three'>
+                    {/* vertical layer three */}
                 </div>
             </div>
 
-            {/* <h1>DASHBOARD</h1>
-
-            <textarea className="blogpost-text-area" value={blogPostText} onChange={blogPostTextValueChanged}>
-                nvksnvksnv
-            </textarea>
-            <input type='button' onClick={postBlogPost} /> */}
         </div>
     )
 }
