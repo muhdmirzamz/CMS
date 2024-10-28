@@ -1,5 +1,8 @@
 # CHANGELOG
 
+28 October 2024
+- Mock up scrollable list done
+
 17 October 2024
 - Text area and Post button CSS is done
 

@@ -5,6 +5,52 @@ import '../styles/Dashboard.css';
 const Dashboard = () => {
 
     const [blogPostText, setBlogText] = useState('')
+    const [blogPostList, setBlogPostList] = useState([
+        {
+            blogTitle: "one",
+            blogBody: "this is a paragraph.this is a paragraph.this is a paragraph.this is a paragraph. this is a paragraph.this is a paragraph."
+        },
+        {
+            blogTitle: "two",
+            blogBody: "this is a paragraph.this is a paragraph.this is a paragraph.this is a paragraph. this is a paragraph.this is a paragraph."
+        },
+        {
+            blogTitle: "three",
+            blogBody: "this is a paragraph.this is a paragraph.this is a paragraph.this is a paragraph. this is a paragraph.this is a paragraph."
+        },
+        {
+            blogTitle: "three",
+            blogBody: "this is a paragraph.this is a paragraph.this is a paragraph.this is a paragraph. this is a paragraph.this is a paragraph."
+        },
+        {
+            blogTitle: "three",
+            blogBody: "this is a paragraph.this is a paragraph.this is a paragraph.this is a paragraph. this is a paragraph.this is a paragraph."
+        },
+        {
+            blogTitle: "three",
+            blogBody: "this is a paragraph.this is a paragraph.this is a paragraph.this is a paragraph. this is a paragraph.this is a paragraph."
+        },
+        {
+            blogTitle: "three",
+            blogBody: "this is a paragraph.this is a paragraph.this is a paragraph.this is a paragraph. this is a paragraph.this is a paragraph."
+        },
+        {
+            blogTitle: "three",
+            blogBody: "this is a paragraph.this is a paragraph.this is a paragraph.this is a paragraph. this is a paragraph.this is a paragraph."
+        },
+        {
+            blogTitle: "three",
+            blogBody: "this is a paragraph.this is a paragraph.this is a paragraph.this is a paragraph. this is a paragraph.this is a paragraph."
+        },
+        {
+            blogTitle: "three",
+            blogBody: "this is a paragraph.this is a paragraph.this is a paragraph.this is a paragraph. this is a paragraph.this is a paragraph."
+        },
+        {
+            blogTitle: "three",
+            blogBody: "this is a paragraph.this is a paragraph.this is a paragraph.this is a paragraph. this is a paragraph.this is a paragraph."
+        }
+    ])
 
     const blogPostTextValueChanged = (event) => {
         setBlogText(event.target.value)
@@ -36,7 +82,16 @@ const Dashboard = () => {
                         </div>
                     </div>
                     <div className='blogpost-list-div'>
-                        BLOG POST LIST DIV
+                        {
+                            blogPostList.map((blogPost, index) => {
+                                return (
+                                    <div className='blogpost' key={index}>
+                                        <p>{blogPost.blogTitle}</p>
+                                        <p>{blogPost.blogBody}</p>
+                                    </div>
+                                )
+                            })
+                        }
                     </div>
 
                 </div>
