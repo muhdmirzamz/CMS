@@ -10,12 +10,15 @@ const express = require('express')
 // the old method doesnt work anymore
 // it only works for < firebase v8
 // we are using firebase v10
+// ---> use the "web modular api" segment <---
 // we are essentially taking the "import" statements and converting them to "require" statements
 // it's from the same docs
 // https://firebase.google.com/docs/auth/web/password-auth#web_2
 
 const { initializeApp } = require('firebase/app')
 const { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } = require('firebase/auth')
+
+const { getDatabase, ref, set } = require('firebase/database')
 
 const app = express()
 
@@ -32,7 +35,12 @@ app.use( (req, res, next) => {
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  
+  apiKey: "AIzaSyDO6HDVEAm33kuxMHELfXRgUgOBl8SRJwE",
+  authDomain: "cms-project-ef63e.firebaseapp.com",
+  projectId: "cms-project-ef63e",
+  storageBucket: "cms-project-ef63e.appspot.com",
+  messagingSenderId: "926190340917",
+  appId: "1:926190340917:web:389002fe0930c8a7a51a7c"
 };
 
 initializeApp(firebaseConfig);
@@ -56,12 +64,22 @@ app.post('/signup', (req, res) => {
   createUserWithEmailAndPassword(auth, email, password).then(userCredential => {
     // Signed in 
     // const user = userCredential.user;
+
+    const userId = userCredential.user.uid
+    const userEmail = userCredential.user.email
+
+    const database = getDatabase();
+    set(ref(database, 'users/' + userId), {
+      email: userEmail
+    });
+
   }).catch(error => {
     // const errorCode = error.code;
     // const errorMessage = error.message;  
+    res.status(500).send(error.message)
   })
 
-  res.send('signed up')
+  res.status(200).send('signed up')
 })
 
 app.post('/login', (req, res) => {

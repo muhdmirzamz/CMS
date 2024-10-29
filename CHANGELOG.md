@@ -1,5 +1,8 @@
 # CHANGELOG
 
+29 October 2024
+- Added an extra table for users in firebase
+
 28 October 2024
 - Mock up scrollable list done
 
