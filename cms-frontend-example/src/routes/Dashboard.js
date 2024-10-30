@@ -86,7 +86,7 @@ const Dashboard = () => {
                             blogPostList.map((blogPost, index) => {
                                 return (
                                     <div className='blogpost' key={index}>
-                                        <p>{blogPost.blogTitle}</p>
+                                        <h2>{blogPost.blogTitle}</h2>
                                         <p>{blogPost.blogBody}</p>
                                     </div>
                                 )

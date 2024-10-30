@@ -35,12 +35,12 @@ app.use( (req, res, next) => {
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDO6HDVEAm33kuxMHELfXRgUgOBl8SRJwE",
-  authDomain: "cms-project-ef63e.firebaseapp.com",
-  projectId: "cms-project-ef63e",
-  storageBucket: "cms-project-ef63e.appspot.com",
-  messagingSenderId: "926190340917",
-  appId: "1:926190340917:web:389002fe0930c8a7a51a7c"
+  apiKey: "",
+  authDomain: "",
+  projectId: "",
+  storageBucket: "",
+  messagingSenderId: "",
+  appId: ""
 };
 
 initializeApp(firebaseConfig);
