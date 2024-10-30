@@ -8,7 +8,10 @@ const Dashboard = () => {
     const [blogPostList, setBlogPostList] = useState([
         {
             blogTitle: "one",
-            blogBody: "this is a paragraph.this is a paragraph.this is a paragraph.this is a paragraph. this is a paragraph.this is a paragraph."
+            blogBody: 
+            `this is a paragraph.this is a paragraph.this is a paragraph.this is a paragraph.
+            this is a paragraph.this is a paragraph.this is a paragraph.this is a paragraph.
+            `
         },
         {
             blogTitle: "two",

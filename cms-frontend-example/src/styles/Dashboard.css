@@ -42,11 +42,13 @@
 
 .blogpost-text-area-div {
     display: flex;
-    flex: 2;
+    flex: 3;
     justify-content: center;
     align-items: center;
 
     /* width: 100%; */
+
+    padding-top: 1%;
 
     background-color: beige;
 }
@@ -55,6 +57,8 @@
     resize: none;
     width: 95%;
     height: 90%;
+
+    border-radius: 5px;
 }
 
 .blogpost-post-button-div {

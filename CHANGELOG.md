@@ -1,5 +1,8 @@
 # CHANGELOG
 
+31 October 2024
+- CSS changes around the blog post text area
+
 29 October 2024
 - Added an extra table for users in firebase
 
