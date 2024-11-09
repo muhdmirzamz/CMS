@@ -1,0 +1,37 @@
+.main-body {
+    /* background-color: bisque; */
+    display: flex;
+
+    height: 100vh;
+}
+
+.nav-button {
+    width: 80%;
+    height: 10%;
+}
+
+/* a class that holds common attributes for every layer */
+.vertical-layer {
+    height: 100vh;
+}
+
+.vertical-layer-one {
+    display: flex;
+    flex: 1;
+
+    background-color: aqua;
+}
+
+.vertical-layer-two {
+    display: flex;
+    flex: 3;
+
+    background-color: beige;
+}
+
+.vertical-layer-three {
+    display: flex;
+    flex: 1;
+
+    /* background-color: blue; */
+}

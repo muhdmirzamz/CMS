@@ -1,10 +1,14 @@
 import { useState } from 'react';
 
-import '../styles/Dashboard.css';
+import { useNavigate } from 'react-router-dom'; 
+
+import '../styles/common.css';
+import '../styles/dashboard.css';
 
 const Dashboard = () => {
 
-    const [blogPostText, setBlogText] = useState('')
+    const [blogPostTitleText, setBlogPostTitleText] = useState('')
+    const [blogPostText, setBlogPostText] = useState('')
     const [blogPostList, setBlogPostList] = useState([
         {
             blogTitle: "one",
@@ -55,52 +59,38 @@ const Dashboard = () => {
         }
     ])
 
-    const blogPostTextValueChanged = (event) => {
-        setBlogText(event.target.value)
-    }
+    const navigate = useNavigate()
 
-    const postBlogPost = () => {
-
+    const goToCreateBlogPostScreen = () => {
+        navigate('/create-blog-post')
     }
 
     return (
-        <div className='dashboard-body'>
+        <div className='main-body'>
+            
+            <div className='vertical-layer vertical-layer-one'>
+                {/* vertical layer one */}
 
-            <div className='layered-div'>
-                <div className='vertical-layer vertical-layer-one'>
-                    {/* vertical layer one */}
-                </div>
-                <div className='vertical-layer vertical-layer-two'>
-                    {/* this div houses the divs for text area and button */}
-                    <div className='blogpost-text-area-component-div'>
-                        {/* this div is the parent component for the text area */}
-                        <div className='blogpost-text-area-div'>
-                            <textarea className='blogpost-text-area' value={blogPostText} onChange={blogPostTextValueChanged}>
-                            </textarea>
-                        </div>
+                <input className='nav-button' value='Create blog post' type='button' onClick={goToCreateBlogPostScreen} />
+            </div>
+            <div className='vertical-layer vertical-layer-two'>
 
-                        {/* this div is the parent component for the post button */}
-                        <div className='blogpost-post-button-div'>
-                            <input className='post-button' value='Post' type='button' onClick={postBlogPost} />
-                        </div>
-                    </div>
-                    <div className='blogpost-list-div'>
-                        {
-                            blogPostList.map((blogPost, index) => {
-                                return (
-                                    <div className='blogpost' key={index}>
-                                        <h2>{blogPost.blogTitle}</h2>
-                                        <p>{blogPost.blogBody}</p>
-                                    </div>
-                                )
-                            })
-                        }
-                    </div>
+                <div className='blogpost-list-div'>
+                    {
+                        blogPostList.map((blogPost, index) => {
+                            return (
+                                <div className='blogpost' key={index}>
+                                    <h2>{blogPost.blogTitle}</h2>
+                                    <p>{blogPost.blogBody}</p>
+                                </div>
+                            )
+                        })
+                    }
+                </div>
 
-                </div>
-                <div className='vertical-layer vertical-layer-three'>
-                    {/* vertical layer three */}
-                </div>
+            </div>
+            <div className='vertical-layer vertical-layer-three'>
+                {/* vertical layer three */}
             </div>
 
         </div>
