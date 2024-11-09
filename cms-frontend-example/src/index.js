@@ -6,6 +6,7 @@ import './index.css';
 import Login from './routes/Login';
 import Signup from './routes/Signup';
 import Dashboard from './routes/Dashboard';
+import CreateBlogPost from './routes/CreateBlogPost';
 
 import {
   createBrowserRouter,
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
   {
     path: "/dashboard",
     element: <Dashboard />,
+  },
+  {
+    path: "/create-blog-post",
+    element: <CreateBlogPost />,
   },
 ]);
 
