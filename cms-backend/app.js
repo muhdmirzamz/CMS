@@ -1,15 +1,5 @@
 const express = require('express')
 
-// imported as documented from Firebase
-// https://firebase.google.com/docs/web/alt-setup#node.js-apps
-// const firebase = require('firebase/app')
-// require('firebase/auth')
-// require('firebase/database')
-
-
-// the old method doesnt work anymore
-// it only works for < firebase v8
-// we are using firebase v10
 // ---> use the "web modular api" segment <---
 // we are essentially taking the "import" statements and converting them to "require" statements
 // it's from the same docs
@@ -17,8 +7,7 @@ const express = require('express')
 
 const { initializeApp } = require('firebase/app')
 const { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } = require('firebase/auth')
-
-const { getDatabase, ref, set } = require('firebase/database')
+const { getDatabase, ref, child, get, set, push, update } = require('firebase/database')
 
 const app = express()
 
@@ -35,12 +24,7 @@ app.use( (req, res, next) => {
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "",
-  authDomain: "",
-  projectId: "",
-  storageBucket: "",
-  messagingSenderId: "",
-  appId: ""
+  
 };
 
 initializeApp(firebaseConfig);
@@ -63,19 +47,8 @@ app.post('/signup', (req, res) => {
   const auth = getAuth();
   createUserWithEmailAndPassword(auth, email, password).then(userCredential => {
     // Signed in 
-    // const user = userCredential.user;
-
-    const userId = userCredential.user.uid
-    const userEmail = userCredential.user.email
-
-    const database = getDatabase();
-    set(ref(database, 'users/' + userId), {
-      email: userEmail
-    });
 
   }).catch(error => {
-    // const errorCode = error.code;
-    // const errorMessage = error.message;  
     res.status(500).send(error.message)
   })
 
@@ -93,15 +66,31 @@ app.post('/login', (req, res) => {
   const auth = getAuth();
   signInWithEmailAndPassword(auth, email, password).then((userCredential) => {
     // Signed in 
-    // const user = userCredential.user;
-    
   })
   .catch((error) => {
-    // const errorCode = error.code;
-    // const errorMessage = error.message;
   });
 
-  res.send('logged in')
+  res.status(200).send('logged in')
+})
+
+app.post('/post', (req, res) => {
+  const auth = getAuth();
+  const userId = auth.currentUser.uid
+
+  const database = getDatabase();
+
+  // we are creating a unique key by "pushing" a new key into the database at the specified path
+  const newPostKey = push(child(ref(database), `posts/${userId}`)).key;
+
+  const updates = {}
+  updates['posts/' + userId + `/${newPostKey}`] = {
+    title: req.body.title,
+    body: req.body.body
+  };
+
+  update(ref(database), updates)
+
+  res.status(200).send('logged in')
 })
 
 app.listen(port, () => console.log("App listening at https://localhost:${" + port + "}"))

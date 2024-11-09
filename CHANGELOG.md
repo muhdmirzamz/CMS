@@ -1,5 +1,9 @@
 # CHANGELOG
 
+9 November 2024
+- New screen to create a blog post
+- You are now able to post to the database
+
 31 October 2024
 - CSS changes around the blog post text area
 
