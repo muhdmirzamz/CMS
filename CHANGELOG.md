@@ -1,5 +1,8 @@
 # CHANGELOG
 
+11 November 2024
+- You can now retrieve and display your posted blog posts
+
 9 November 2024
 - New screen to create a blog post
 - You are now able to post to the database
