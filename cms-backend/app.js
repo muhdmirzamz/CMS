@@ -6,7 +6,7 @@ const express = require('express')
 // https://firebase.google.com/docs/auth/web/password-auth#web_2
 
 const { initializeApp } = require('firebase/app')
-const { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } = require('firebase/auth')
+const { getAuth, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword } = require('firebase/auth')
 const { getDatabase, ref, child, get, set, push, update } = require('firebase/database')
 
 const app = express()
@@ -66,6 +66,7 @@ app.post('/login', (req, res) => {
   const auth = getAuth();
   signInWithEmailAndPassword(auth, email, password).then((userCredential) => {
     // Signed in 
+    res.status(200).send('logged in')
   })
   .catch((error) => {
   });
@@ -73,24 +74,61 @@ app.post('/login', (req, res) => {
   res.status(200).send('logged in')
 })
 
+app.get('/getPosts', (req, res) => {
+  const dbRef = ref(getDatabase());
+
+  const auth = getAuth();
+
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      const userId = user.uid;
+      
+      get(child(dbRef, `posts/${userId}`)).then((snapshot) => {
+        if (snapshot.exists()) {
+          console.log(snapshot.val());
+    
+          res.status(200).send(snapshot.val())
+        } else {
+          console.log("No data available");
+        }
+      })
+    } else {
+      // Handle case where user is not signed in
+    }
+  });
+
+  
+
+  // res.status(200).send('get request')
+})
+
 app.post('/post', (req, res) => {
   const auth = getAuth();
-  const userId = auth.currentUser.uid
 
-  const database = getDatabase();
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      const userId = user.uid;
+      
+      const database = getDatabase();
 
-  // we are creating a unique key by "pushing" a new key into the database at the specified path
-  const newPostKey = push(child(ref(database), `posts/${userId}`)).key;
+      // we are creating a unique key by "pushing" a new key into the database at the specified path
+      const newPostKey = push(child(ref(database), `posts/${userId}`)).key;
 
-  const updates = {}
-  updates['posts/' + userId + `/${newPostKey}`] = {
-    title: req.body.title,
-    body: req.body.body
-  };
+      const updates = {}
+      updates['posts/' + userId + `/${newPostKey}`] = {
+        title: req.body.title,
+        body: req.body.body
+      };
 
-  update(ref(database), updates)
+      update(ref(database), updates)
 
-  res.status(200).send('logged in')
+      res.status(200).send('logged in')
+    } else {
+      // Handle case where user is not signed in
+    }
+  });
+
+  
 })
 
 app.listen(port, () => console.log("App listening at https://localhost:${" + port + "}"))
