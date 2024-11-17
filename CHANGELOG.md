@@ -1,5 +1,8 @@
 # CHANGELOG
 
+17 November 2024
+- Added logout button
+
 11 November 2024
 - You can now retrieve and display your posted blog posts
 
