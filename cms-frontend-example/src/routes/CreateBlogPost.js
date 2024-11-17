@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom';
 
 import axios from 'axios';
 
+import LogoutButton from '../component/LogoutButton';
+
 import '../styles/common.css';
 import '../styles/createblogpost.css'
 
@@ -44,6 +46,7 @@ const CreateBlogPost = () => {
                 {/* vertical layer one */}
 
                 <input className='nav-button' value='Home' type='button' onClick={backToHome} />
+                <LogoutButton />
             </div>
             <div className='vertical-layer vertical-layer-two'>
                 {/* vertical layer two */}

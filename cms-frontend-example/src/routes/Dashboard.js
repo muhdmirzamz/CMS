@@ -4,6 +4,8 @@ import { useNavigate, useLocation } from 'react-router-dom';
 
 import axios from 'axios';
 
+import LogoutButton from '../component/LogoutButton';
+
 import '../styles/common.css';
 import '../styles/dashboard.css';
 
@@ -44,6 +46,8 @@ const Dashboard = () => {
                 {/* vertical layer one */}
 
                 <input className='nav-button' value='Create blog post' type='button' onClick={goToCreateBlogPostScreen} />
+                {/* <input className='logout-button' value='Log out' type='button' onClick={logOut} /> */}
+                <LogoutButton />
             </div>
             <div className='vertical-layer vertical-layer-two'>
 
