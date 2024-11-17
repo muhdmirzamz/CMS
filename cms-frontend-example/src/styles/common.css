@@ -17,6 +17,10 @@
 
 .vertical-layer-one {
     display: flex;
+
+    flex-direction: column;
+    justify-content: space-between;
+
     flex: 1;
 
     background-color: aqua;
