@@ -6,6 +6,8 @@ import axios from 'axios';
 
 import LogoutButton from '../component/LogoutButton';
 
+import CookieManager from '../CookieManager';
+
 import '../styles/common.css';
 import '../styles/dashboard.css';
 
@@ -14,11 +16,29 @@ const Dashboard = () => {
     const [blogPostList, setBlogPostList] = useState([])
 
     const navigate = useNavigate()
-    const location = useLocation()
+
+    const cookieManager = new CookieManager()
 
     useEffect(() => {
-        fetchBlogPosts()
-    }, [location.key])
+        // kicks the user out if cookie is invalid or non-existent
+        if (cookieManager.getCookie("username") === null) {
+            navigate('/') 
+        } else if (cookieManager.getCookie("username") === "") { // this happens when the tab is closed
+            console.log(`cookie is empty string`)
+            
+            // the site will go on an endless loop if you dont delete the cookie
+
+            // 1) it sees a valid, not null cookie but with an empty string
+            // 2) and it will proceed to render the page
+            // 3) but then it sees the navigation back to login
+            cookieManager.deleteCookie("username")
+            navigate('/')
+        } else {
+            fetchBlogPosts()
+
+            console.log(`DASHBOARD USE EFFECT`)
+        }
+    }, []) 
 
     const fetchBlogPosts = () => {
         let tmpArr = []

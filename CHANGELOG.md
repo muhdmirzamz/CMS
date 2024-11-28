@@ -1,5 +1,8 @@
 # CHANGELOG
 
+29 November 2024
+- Cookies implemented
+
 17 November 2024
 - Added logout button
 

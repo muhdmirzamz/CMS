@@ -1,10 +1,12 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { useNavigate } from 'react-router-dom';
 
 import axios from 'axios';
 
 import LogoutButton from '../component/LogoutButton';
+
+import CookieManager from '../CookieManager';
 
 import '../styles/common.css';
 import '../styles/createblogpost.css'
@@ -15,6 +17,24 @@ const CreateBlogPost = () => {
     const [blogPostBodyText, setBlogPostBodyText] = useState('')
 
     const navigate = useNavigate()
+
+    const cookieManager = new CookieManager()
+
+    useEffect(() => {
+
+        // kicks the user out if cookie is invalid or non-existent
+        if (cookieManager.getCookie("username") === null) {
+            navigate('/') 
+        } else if (cookieManager.getCookie("username") === "") { // this happens when the tab is closed
+            console.log(`cookie is empty string`)
+
+            cookieManager.deleteCookie("username")
+            navigate('/')
+        } else {
+            console.log(`CREATE BLOG POST USE EFFECT`)
+        }
+
+    }, [])
 
     const backToHome = () => {
         navigate("/dashboard")

@@ -1,6 +1,8 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { useNavigate } from 'react-router-dom';
+
+import CookieManager from '../CookieManager';
 
 import '../App.css';
 
@@ -13,6 +15,8 @@ const Login = () => {
 
   const navigate = useNavigate()
 
+  const cookieManager = new CookieManager()
+
   const usernameTxtfieldValueChange = (event) => {
     setUsername(event.target.value)
   }
@@ -21,12 +25,28 @@ const Login = () => {
     setPassword(event.target.value)
   }
 
+  useEffect(() => {
+
+    // cookie has not expired
+    if (cookieManager.getCookie("username") !== null) {
+
+      console.log(`logged in, going to dashboard`)
+
+      // renew the cookie and login
+      cookieManager.setSessionCookie("username", username)
+
+      navigate('/dashboard') 
+    }
+  }, [])
+
   const onLogin = () => {
     axios.post('http://localhost:9000/login', {username: username, password: password}).then(res => {
 
       console.log(res)
 
       if (res.status === 200) {
+        cookieManager.setSessionCookie("username", username)
+
         navigate('/dashboard')
       }
 
