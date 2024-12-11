@@ -9,6 +9,8 @@ const { initializeApp } = require('firebase/app')
 const { getAuth, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword } = require('firebase/auth')
 const { getDatabase, ref, child, get, set, push, update } = require('firebase/database')
 
+const { apiKey, authDomain, databaseURL, projectId, storageBucket, messagingSenderId, appId } = require('./const.js')
+
 const app = express()
 
 app.use(express.urlencoded({ extended: true }));
@@ -24,7 +26,13 @@ app.use( (req, res, next) => {
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  
+  apiKey: apiKey,
+  authDomain: authDomain,
+  databaseURL: databaseURL,
+  projectId: projectId,
+  storageBucket: storageBucket,
+  messagingSenderId: messagingSenderId,
+  appId: appId
 };
 
 initializeApp(firebaseConfig);
