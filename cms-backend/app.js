@@ -110,6 +110,32 @@ app.get('/getPosts', (req, res) => {
   // res.status(200).send('get request')
 })
 
+app.get('/getPostWithId', (req, res) => {
+  const dbRef = ref(getDatabase());
+
+  const auth = getAuth();
+
+  const blogPostId = req.query.id
+
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      const userId = user.uid;
+      
+      get(child(dbRef, `posts/${userId}/${blogPostId}`)).then((snapshot) => {
+        if (snapshot.exists()) {
+          console.log(snapshot.val());
+    
+          res.status(200).send(snapshot.val())
+        } else {
+          console.log("No data available");
+        }
+      })
+    } else {
+      // Handle case where user is not signed in
+    }
+  });
+})
+
 app.post('/post', (req, res) => {
   const auth = getAuth();
 
