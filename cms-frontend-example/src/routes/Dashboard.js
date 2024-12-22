@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { useNavigate, useLocation } from 'react-router-dom'; 
+import { useNavigate, useLocation, Link } from 'react-router-dom'; 
 
 import axios from 'axios';
 
@@ -27,7 +27,7 @@ const Dashboard = () => {
             console.log(`cookie is empty string`)
             
             // the site will go on an endless loop if you dont delete the cookie
-
+            // here is what happens
             // 1) it sees a valid, not null cookie but with an empty string
             // 2) and it will proceed to render the page
             // 3) but then it sees the navigation back to login
@@ -47,8 +47,11 @@ const Dashboard = () => {
 
             let data = response.data
 
-            for (const key in data) {
-                tmpArr.push(data[key])
+            for (const i in data) {
+                // square brackets to access the key, not just 'i'
+                let blogPost = {[i]: data[i]}
+
+                tmpArr.push(blogPost)
             }
 
             setBlogPostList(tmpArr)
@@ -73,12 +76,19 @@ const Dashboard = () => {
 
                 <div className='blogpost-list-div'>
                     {
-                        blogPostList.map((blogPost, index) => {
+                        blogPostList.map((blogPostObject, index) => {
+                            console.log(`blogpost obj: ${JSON.stringify(blogPostObject)}`)
+
+                            let blogPostKey = Object.keys(blogPostObject)[0]
+                            let blogPost = blogPostObject[blogPostKey]
+
                             return (
-                                <div className='blogpost' key={index}>
-                                    <h2>{blogPost.title}</h2>
-                                    <p>{blogPost.body}</p>
-                                </div>
+                                <Link className="react-router-dom-link" to={`/blog-post-detail-view/${blogPostKey}`} key={index}>
+                                    <div className='blogpost' key={index}>
+                                        <h2>{blogPost.title}</h2>
+                                        <p>{blogPost.body}</p>
+                                    </div>
+                                </Link>
                             )
                         })
                     }
