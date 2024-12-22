@@ -4,13 +4,6 @@ export default class CookieManager {
 
     }
 
-    // setCookie(name, value, days) {
-    //     const date = new Date()
-    //     date.setDate(date.getTime() + days * 24 * 60 * 60 * 1000)
-
-    //     document.cookie = `${name}=${value};expires=${date.toUTCString()};path=/`
-    // }
-
     setCookieWithExpiry(key, value, milliseconds) {
         const date = new Date()
         date.setTime(date.getTime() + milliseconds)
@@ -44,6 +37,7 @@ export default class CookieManager {
         // set 1s back in the past
         date.setTime(date.getTime() - 1000)
 
+        // set the value to nothing
         document.cookie = `${name}=;expires=${date.toUTCString()};path=/`        
     }
 }
