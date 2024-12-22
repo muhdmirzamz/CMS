@@ -7,6 +7,7 @@ import Login from './routes/Login';
 import Signup from './routes/Signup';
 import Dashboard from './routes/Dashboard';
 import CreateBlogPost from './routes/CreateBlogPost';
+import BlogPostDetailView from './routes/BlogPostDetailView';
 
 import {
   createBrowserRouter,
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
   {
     path: "/create-blog-post",
     element: <CreateBlogPost />,
+  },
+  {
+    path: "/blog-post-detail-view/:id",
+    element: <BlogPostDetailView />,
   },
 ]);
 
