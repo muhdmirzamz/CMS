@@ -1,5 +1,8 @@
 # CHANGELOG
 
+31 Dec 2024
+- New blog post detail view 
+
 29 November 2024
 - Cookies implemented
 

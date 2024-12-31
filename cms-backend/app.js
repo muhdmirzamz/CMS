@@ -161,8 +161,33 @@ app.post('/post', (req, res) => {
       // Handle case where user is not signed in
     }
   });
-
-  
 })
+
+// app.post('/updatePost', (req, res) => {
+//   const auth = getAuth();
+
+//   onAuthStateChanged(auth, (user) => {
+//     if (user) {
+//       const userId = user.uid;
+      
+//       const database = getDatabase();
+
+//       // we are creating a unique key by "pushing" a new key into the database at the specified path
+//       const newPostKey = push(child(ref(database), `posts/${userId}`)).key;
+
+//       const updates = {}
+//       updates['posts/' + userId + `/${req.body.blogPostId}`] = {
+//         title: req.body.title,
+//         body: req.body.body
+//       };
+
+//       update(ref(database), updates)
+
+//       res.status(200).send('logged in')
+//     } else {
+//       // Handle case where user is not signed in
+//     }
+//   });
+// })
 
 app.listen(port, () => console.log("App listening at https://localhost:${" + port + "}"))

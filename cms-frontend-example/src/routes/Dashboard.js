@@ -80,6 +80,9 @@ const Dashboard = () => {
                             console.log(`blogpost obj: ${JSON.stringify(blogPostObject)}`)
 
                             let blogPostKey = Object.keys(blogPostObject)[0]
+
+                            console.log(`dashboard blogPostKey: ${blogPostKey}`)
+
                             let blogPost = blogPostObject[blogPostKey]
 
                             return (

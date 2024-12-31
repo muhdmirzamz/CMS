@@ -12,7 +12,7 @@ import '../styles/common.css';
 
 const BlogPostDetailView = () => {
 
-    const { id } = useParams()
+    const { id } = useParams() // variable id follows the declared variable in the route code in index.js
     const navigate = useNavigate()
 
     const [blogPostTitleText, setBlogPostTitleText] = useState('')
@@ -21,12 +21,18 @@ const BlogPostDetailView = () => {
     const cookieManager = new CookieManager()
 
     useEffect(() => {
+
+        console.log(`detail view blogPostKey: ${id}`)
+
         axios.get(`http://localhost:9000/getPostWithId`, {
             params: {
               id: id
             }
         }).then(res => {
             console.log(res)
+
+            setBlogPostTitleText(res.data.title)
+            setBlogPostBodyText(res.data.body)
         })
     }, [])
 
@@ -42,18 +48,19 @@ const BlogPostDetailView = () => {
         setBlogPostBodyText(event.target.value)
     }
 
-    const postBlogPost = (event) => {
-        if (cookieManager.getCookie("username") !== null && cookieManager.getCookie("username") !== "") {
-            axios.post('http://localhost:9000/post', {title: blogPostTitleText, body: blogPostBodyText}).then(res => {
+    const updateBlogPost = (event) => {
+        // if (cookieManager.getCookie("username") !== null && cookieManager.getCookie("username") !== "") {
+        //     axios.post('http://localhost:9000/post', {
+        //         title: blogPostTitleText, body: blogPostBodyText}).then(res => {
 
-                console.log(res)
+        //         console.log(res)
             
-                if (res.status === 200) {
-                    navigate('/dashboard')
-                }
+        //         if (res.status === 200) {
+        //             navigate('/dashboard')
+        //         }
         
-            })
-        }
+        //     })
+        // }
     }
 
     return (
@@ -71,19 +78,19 @@ const BlogPostDetailView = () => {
                 <div className='blogpost-input-component-div'>
 
                     <div className='blogpost-title-div'>
-                        <textarea className='blogpost-title-text-area' value={blogPostTitleText} onChange={blogPostTitleTextValueChanged}>
+                        <textarea className='blogpost-title-text-area' placeholder={blogPostTitleText} onChange={blogPostTitleTextValueChanged}>
                         </textarea>
                     </div>
 
                     {/* this div is the parent component for the text area */}
                     <div className='blogpost-text-area-div'>
-                        <textarea className='blogpost-text-text-area' value={blogPostBodyText} onChange={blogPostBodyTextValueChanged}>
+                        <textarea className='blogpost-text-text-area' placeholder={blogPostBodyText} onChange={blogPostBodyTextValueChanged}>
                         </textarea>
                     </div>
 
                     {/* this div is the parent component for the post button */}
                     <div className='blogpost-post-button-div'>
-                        <input className='post-button' value='Post' type='button' onClick={postBlogPost} />
+                        <input className='post-button' value='Update' type='button' onClick={updateBlogPost} />
                     </div>
                 </div>
 
