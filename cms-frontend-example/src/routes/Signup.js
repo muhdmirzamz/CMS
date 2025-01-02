@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 import axios from 'axios';
 
-import '../App.css';
+import '../styles/signup.css';
 
 const Signup = () => {
 
@@ -34,11 +34,18 @@ const Signup = () => {
     }
 
     return (
-        <div>
-            <h1>Register</h1>
-            <input type='text' value={username} className='tf' onChange={usernameTxtfieldValueChange} />
-            <input type='password' value={password} className='tf' onChange={passwordTxtfieldValueChange} />
-            <input type="button" className="signup-btn" onClick={onSignup} value="Sign up" />
+        <div className='signup-main-body'>
+            <div className="signup-panel">
+                <div className='signup-panel-title'>
+                    Sign up
+                </div>
+                <div className='signup-textfields-area'>
+                    <input type='text' value={username} className='signup-textfields' id="signup-usernameTextfield" onChange={usernameTxtfieldValueChange} />
+                    <input type='password' value={password} className='signup-textfields' id="signup-passwordTextfield" onChange={passwordTxtfieldValueChange} />
+                    
+                    <input type="button" className="signup-btn" onClick={onSignup} value="Sign up" />
+                </div>
+            </div>
         </div>
     )
 }

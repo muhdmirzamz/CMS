@@ -1,4 +1,4 @@
-.login-main-body {
+.signup-main-body {
     display: flex;
 
     justify-content: center;
@@ -9,7 +9,7 @@
     background-color: aqua;
 }
 
-.login-panel {
+.signup-panel {
     display: flex;
 
     flex-direction: column;
@@ -24,7 +24,7 @@
     background-color: white;
 }
 
-.login-panel-title {
+.signup-panel-title {
     display: flex;
     flex: 1;
 
@@ -34,10 +34,10 @@
     /* background-color: red; */
 }
 
-.login-textfields-area {
+.signup-textfields-area {
 
     display: flex;
-    flex: 3;
+    flex: 4;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -45,7 +45,7 @@
     /* background-color: blanchedalmond; */
 }
 
-.login-textfields {
+.signup-textfields {
     width: 20vw;
     height: 3vh;
 
@@ -54,15 +54,15 @@
     border-radius: 5px;
 }
 
-#usernameTextfield {
+#signup-usernameTextfield {
     margin-bottom: 5%;
 }
 
-#passwordTextfield {
+#signup-passwordTextfield {
     margin-bottom: 9%;
 }
 
-.login-btn {
+.signup-btn {
     width: 20vw;
     height: 5vh;
 
@@ -74,12 +74,3 @@
     background-color: aqua;
 }
 
-.login-page-signup-area {
-    flex: 1;
-
-    display: flex;
-
-    align-items: center;
-
-    /* background-color: green; */
-}

@@ -1,6 +1,9 @@
 # CHANGELOG
 
 
+2 Jan 2025
+- Sign up page redesign
+
 31 Dec 2024
 - Better design for log in page
 

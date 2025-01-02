@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 
 import CookieManager from '../CookieManager';
 
-import '../App.css';
 import '../styles/login.css';
 
 import axios from 'axios';
@@ -68,7 +67,7 @@ const Login = () => {
           <input type="button" className="login-btn" onClick={onLogin} value="Login" />
         </div>
 
-        <div className='login-textfields-signup-area'>
+        <div className='login-page-signup-area'>
           <p>Don't have an account? <a href={`/signup`}>Sign up</a></p>
         </div>
       </div>
