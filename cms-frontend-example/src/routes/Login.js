@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import CookieManager from '../CookieManager';
 
 import '../App.css';
+import '../styles/login.css';
 
 import axios from 'axios';
 
@@ -54,18 +55,24 @@ const Login = () => {
   }
 
   return (
-    <div className="login-panel">
+    <div className='login-main-body'>
 
-      <div className='title'>
-        Test
-      </div>
-      <div className='textfields'>
-        <input type='text' value={username} className='tf' onChange={usernameTxtfieldValueChange} />
-        <input type='password' value={password} className='tf' onChange={passwordTxtfieldValueChange} />
+      <div className="login-panel">
+        <div className='login-panel-title'>
+          CMS
+        </div>
+        <div className='login-textfields-area'>
+          <input type='text' value={username} className='login-textfields' id="usernameTextfield" onChange={usernameTxtfieldValueChange} />
+          <input type='password' value={password} className='login-textfields' id="passwordTextfield" onChange={passwordTxtfieldValueChange} />
+        
+          <input type="button" className="login-btn" onClick={onLogin} value="Login" />
+        </div>
+
+        <div className='login-textfields-signup-area'>
+          <p>Don't have an account? <a href={`/signup`}>Sign up</a></p>
+        </div>
       </div>
 
-      <input type="button" className="login-btn" onClick={onLogin} value="Login" />
-      <p>Don't have an account? <a href={`/signup`}>Register</a>  </p>
     </div>
   );
 }

@@ -1,0 +1,85 @@
+.login-main-body {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    height: 100vh;
+
+    background-color: aqua;
+}
+
+.login-panel {
+    display: flex;
+
+    flex-direction: column;
+
+    height: 50vh;
+
+    padding: 2%;
+
+    
+    border-radius: 10px;
+
+    background-color: white;
+}
+
+.login-panel-title {
+    display: flex;
+    flex: 1;
+
+    justify-content: center;
+    align-items: center;
+
+    /* background-color: red; */
+}
+
+.login-textfields-area {
+
+    display: flex;
+    flex: 3;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    /* background-color: blanchedalmond; */
+}
+
+.login-textfields {
+    width: 20vw;
+    height: 3vh;
+
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+}
+
+#usernameTextfield {
+    margin-bottom: 5%;
+}
+
+#passwordTextfield {
+    margin-bottom: 9%;
+}
+
+.login-btn {
+    width: 20vw;
+    height: 5vh;
+
+    /* margin: auto; */
+
+    border-style: none;
+    border-radius: 5px;
+
+    background-color: aqua;
+}
+
+.login-textfields-signup-area {
+    flex: 1;
+
+    display: flex;
+
+    align-items: center;
+
+    /* background-color: green; */
+}

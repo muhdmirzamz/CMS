@@ -1,34 +1,11 @@
-.login-panel {
-  background-color: aqua;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
 .title {
   text-align: center;
 
   /* background-color: blue */
 }
 
-.textfields {
-  /* background-color: blanchedalmond; */
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
 .tf {
   width: 20vw;
-}
-
-.login-btn {
-  width: 20vw;
-
-  margin: auto;
 }
 
 .signup-btn {
