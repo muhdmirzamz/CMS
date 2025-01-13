@@ -55,12 +55,10 @@ app.post('/signup', (req, res) => {
   const auth = getAuth();
   createUserWithEmailAndPassword(auth, email, password).then(userCredential => {
     // Signed in 
-
+    res.status(200).send('signed up')
   }).catch(error => {
     res.status(500).send(error.message)
   })
-
-  res.status(200).send('signed up')
 })
 
 app.post('/login', (req, res) => {
@@ -77,9 +75,13 @@ app.post('/login', (req, res) => {
     res.status(200).send('logged in')
   })
   .catch((error) => {
-  });
+    console.log(`printing errors`)
 
-  res.status(200).send('logged in')
+    // error codes are found in docs: 
+    // https://firebase.google.com/docs/reference/js/auth#autherrorcodes
+    res.status(500).send('Something went wrong');
+
+  });
 })
 
 app.get('/getPosts', (req, res) => {
