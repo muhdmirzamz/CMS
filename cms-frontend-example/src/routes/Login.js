@@ -25,6 +25,18 @@ const Login = () => {
     setPassword(event.target.value)
   }
 
+  const usernameLoginOnEnter = (event) => {
+    if (event.keyCode === 13) {
+      onLogin()
+    }
+  }
+
+  const passwordLoginOnEnter = (event) => {
+    if (event.keyCode === 13) {
+      onLogin()
+    }
+  }
+
   useEffect(() => {
 
     // cookie has not expired
@@ -42,6 +54,7 @@ const Login = () => {
   const onLogin = () => {
     axios.post('http://localhost:9000/login', {username: username, password: password}).then(res => {
 
+      console.log(`res code block`)
       console.log(res)
 
       if (res.status === 200) {
@@ -50,6 +63,11 @@ const Login = () => {
         navigate('/dashboard')
       }
 
+    }).catch(error => {
+      console.log(`error code block`)
+      alert(`${error.response.data}. Please check that your username and password are correct`)
+      setUsername('')
+      setPassword('')
     })
   }
 
@@ -61,8 +79,22 @@ const Login = () => {
           CMS
         </div>
         <div className='login-textfields-area'>
-          <input type='text' value={username} className='login-textfields' id="usernameTextfield" onChange={usernameTxtfieldValueChange} />
-          <input type='password' value={password} className='login-textfields' id="passwordTextfield" onChange={passwordTxtfieldValueChange} />
+          <input 
+            type='text' 
+            value={username} 
+            className='login-textfields' 
+            id="usernameTextfield" 
+            onChange={usernameTxtfieldValueChange}
+            onKeyDown={usernameLoginOnEnter}
+           />
+          <input 
+            type='password' 
+            value={password} 
+            className='login-textfields' 
+            id="passwordTextfield" 
+            onChange={passwordTxtfieldValueChange} 
+            onKeyDown={passwordLoginOnEnter}
+          />
         
           <input type="button" className="login-btn" onClick={onLogin} value="Login" />
         </div>

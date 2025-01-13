@@ -1,5 +1,12 @@
 # CHANGELOG
 
+10 Jan 2025
+- You can now press enter to sign in instead of only clicking the login button
+- There is now a popup alert when you entered the wrong credentials to sign in
+- Fixed: Fixed a bug that allowed you to sign up with a faulty email address
+
+8 Jan 2025
+- Fixed: Fixed a bug that allowed you to sign in despite the wrong credentials
 
 2 Jan 2025
 - Sign up page redesign
