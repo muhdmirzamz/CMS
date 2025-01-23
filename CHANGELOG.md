@@ -1,5 +1,9 @@
 # CHANGELOG
 
+23 Jan 2025
+- There is now a back button to go to the Login page from Sign up page
+- The Login and Sign up buttons now have cursor pointers
+
 10 Jan 2025
 - You can now press enter to sign in instead of only clicking the login button
 - There is now a popup alert when you entered the wrong credentials to sign in

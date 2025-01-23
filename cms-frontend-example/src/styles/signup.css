@@ -62,7 +62,27 @@
     margin-bottom: 9%;
 }
 
-.signup-btn {
+.signup-panel-back-to-login {
+    width: 20vw;
+    height: 5vh;
+
+    /* margin: auto; */
+
+    border-style: none;
+    border-radius: 5px;
+
+    margin-bottom: 3%;
+
+    background-color: gray;
+    color: white;
+
+    /* you need this for button types in order for the button to be treated as a link */
+    /* https://stackoverflow.com/questions/45575342/why-does-button-not-have-a-pointer-cursor-on-hover-by-default */
+    cursor: pointer;
+}
+
+/* sign panel button common css */
+.signup-panel-signup-btn {
     width: 20vw;
     height: 5vh;
 
@@ -72,5 +92,9 @@
     border-radius: 5px;
 
     background-color: aqua;
+
+    /* you need this for button types in order for the button to be treated as a link */
+    /* https://stackoverflow.com/questions/45575342/why-does-button-not-have-a-pointer-cursor-on-hover-by-default */
+    cursor: pointer;
 }
 
