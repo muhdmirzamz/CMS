@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 import axios from 'axios';
 
@@ -31,6 +31,10 @@ const Signup = () => {
         if (event.keyCode === 13) {
             onSignup()
         }
+    }
+
+    const backToLogin = () => {
+        navigate('/')
     }
 
     const onSignup = () => {
@@ -73,7 +77,8 @@ const Signup = () => {
                         onKeyDown={passwordSignupOnEnter}
                     />
                     
-                    <input type="button" className="signup-btn" onClick={onSignup} value="Sign up" />
+                    <input type="button" className="signup-panel-back-to-login" onClick={backToLogin} value="Back to Login" />
+                    <input type="button" className="signup-panel-signup-btn" onClick={onSignup} value="Sign up" />
                 </div>
             </div>
         </div>
