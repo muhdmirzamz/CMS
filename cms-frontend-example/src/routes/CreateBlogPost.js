@@ -22,6 +22,8 @@ const CreateBlogPost = () => {
 
     useEffect(() => {
 
+        console.log("[ CreateBlogPost ] use effect")
+
         // kicks the user out if cookie is invalid or non-existent
         if (cookieManager.getCookie("username") === null) {
             navigate('/') 
@@ -31,7 +33,7 @@ const CreateBlogPost = () => {
             cookieManager.deleteCookie("username")
             navigate('/')
         } else {
-            console.log(`CREATE BLOG POST USE EFFECT`)
+            console.log("[ CreateBlogPost ] we are good")
         }
 
     }, [])

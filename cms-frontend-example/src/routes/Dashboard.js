@@ -20,6 +20,8 @@ const Dashboard = () => {
     const cookieManager = new CookieManager()
 
     useEffect(() => {
+        console.log("[ DASHBOARD ] use effect")
+
         // kicks the user out if cookie is invalid or non-existent
         if (cookieManager.getCookie("username") === null) {
             navigate('/') 
@@ -36,7 +38,7 @@ const Dashboard = () => {
         } else {
             fetchBlogPosts()
 
-            console.log(`DASHBOARD USE EFFECT`)
+            console.log("[ DASHBOARD ] fetched blog posts")
         }
     }, []) 
 
@@ -46,6 +48,8 @@ const Dashboard = () => {
         axios.get('http://localhost:9000/getPosts').then(response => {
 
             let data = response.data
+            console.log(`[ DASHBOARD ] response: `)
+            console.log(data)
 
             for (const i in data) {
                 // square brackets to access the key, not just 'i'
