@@ -49,18 +49,20 @@ const BlogPostDetailView = () => {
     }
 
     const updateBlogPost = (event) => {
-        // if (cookieManager.getCookie("username") !== null && cookieManager.getCookie("username") !== "") {
-        //     axios.post('http://localhost:9000/post', {
-        //         title: blogPostTitleText, body: blogPostBodyText}).then(res => {
-
-        //         console.log(res)
+        if (cookieManager.getCookie("username") !== null && cookieManager.getCookie("username") !== "") {
+            axios.post('http://localhost:9000/updatePost', {
+                id: id,
+                title: blogPostTitleText, 
+                body: blogPostBodyText
+            }).then(res => {
+                console.log(res)
             
-        //         if (res.status === 200) {
-        //             navigate('/dashboard')
-        //         }
+                if (res.status === 200) {
+                    navigate('/dashboard')
+                }
         
-        //     })
-        // }
+            })
+        }
     }
 
     return (

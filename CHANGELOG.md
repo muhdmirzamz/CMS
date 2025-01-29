@@ -1,5 +1,9 @@
 # CHANGELOG
 
+29 Jan 2025
+- You can now update blog posts
+- Fixed: Backend now sends back a response when there are no posts from database
+
 23 Jan 2025
 - There is now a back button to go to the Login page from Sign up page
 - The Login and Sign up buttons now have cursor pointers
