@@ -63,6 +63,10 @@ const CreateBlogPost = () => {
     const addTagOnEnterKeyPress = (event) => {
         if (event.keyCode === 13) {
             addTag()
+
+            // default text area behaviour is to go to a new line after you press enter
+            // we do not want that behaviour
+            event.preventDefault()
         }
     }
 
@@ -135,7 +139,7 @@ const CreateBlogPost = () => {
                                 {
                                     blogPostTags.map((tag, index) => {
                                         return (
-                                            <li key={index}>{tag}</li>
+                                            <li className='tag' key={index}>{tag}</li>
                                         )
                                     })
                                 }
