@@ -36,6 +36,7 @@
 
 .blogpost-title-text-area {
     resize: none;
+
     width: 95%;
     height: 20%;
 
@@ -59,10 +60,71 @@
 
 .blogpost-text-text-area {
     resize: none;
+
     width: 95%;
     height: 90%;
 
     border-radius: 5px;
+}
+
+/* =================================== */
+
+.blogpost-tags-div {
+    display: flex;
+    flex: 1;
+
+    /* 
+        this is so that the inner div text area is aligned with the blog post text area
+        kind of a hack around
+     */
+    justify-content: center;
+    align-items: center;
+
+    /* width: 100%; */
+
+    /* padding-top: 1%; */
+
+    /* background-color: red; */
+}
+
+.blogpost-tags-inner-div {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: flex-start;
+
+    /* 
+        we are using the width of the inner div to duplicate the behaviour like a text area
+        without this, the words will be all the way to the left
+     */
+    width: 96%;
+
+    background-color: aqua;
+}
+
+.blogpost-tags-post-div {
+    display: flex;
+
+    /* aligns text area and button vertically */
+    align-items: center;
+
+    background-color: blue;
+}
+
+.blogpost-tags-text-area {
+    resize: none;
+
+    width: 30%;
+    height: 10%;
+
+    border-radius: 5px;
+}
+
+.tags-post-button {
+    width: 10%;
+    height: 4vh;
+
+    margin-left: 2%;
 }
 
 /* =================================== */

@@ -16,6 +16,9 @@ const CreateBlogPost = () => {
     const [blogPostTitleText, setBlogPostTitleText] = useState('')
     const [blogPostBodyText, setBlogPostBodyText] = useState('')
 
+    const [blogPostTagText, setBlogPostTagText] = useState('')
+    const [blogPostTags, setBlogPostTags] = useState([])
+
     const navigate = useNavigate()
 
     const cookieManager = new CookieManager()
@@ -42,6 +45,8 @@ const CreateBlogPost = () => {
         navigate("/dashboard")
     }
 
+    // blog post title and text area =========
+
     const blogPostTitleTextValueChanged = (event) => {
         setBlogPostTitleText(event.target.value)
     }
@@ -50,6 +55,28 @@ const CreateBlogPost = () => {
         setBlogPostBodyText(event.target.value)
     }
 
+    // tags =========
+    const blogPostTagTextValueChanged = (event) => {
+        setBlogPostTagText(event.target.value)
+    }
+
+    const addTagOnEnterKeyPress = (event) => {
+        if (event.keyCode === 13) {
+            addTag()
+        }
+    }
+
+    const addTag = () => {
+        console.log("[ CreateBlogPost ] adding tag ")
+
+        setBlogPostTags((prevState) => {
+            return [...prevState, blogPostTagText]
+        })
+
+        setBlogPostTagText('')
+    }
+
+    // post blog post =========
     const postBlogPost = (event) => {
         if (cookieManager.getCookie("username") !== null && cookieManager.getCookie("username") !== "") {
             axios.post('http://localhost:9000/post', {title: blogPostTitleText, body: blogPostBodyText}).then(res => {
@@ -87,6 +114,33 @@ const CreateBlogPost = () => {
                     <div className='blogpost-text-area-div'>
                         <textarea className='blogpost-text-text-area' value={blogPostBodyText} onChange={blogPostBodyTextValueChanged}>
                         </textarea>
+                    </div>
+
+                    <div className='blogpost-tags-div'>
+                        <div className='blogpost-tags-inner-div'>
+                            <p>Tags</p>
+
+                            <div className='blogpost-tags-post-div'>
+                                <textarea 
+                                    className='blogpost-tags-text-area' 
+                                    value={blogPostTagText} 
+                                    onChange={blogPostTagTextValueChanged}
+                                    onKeyDown={addTagOnEnterKeyPress}
+                                >
+                                </textarea>
+                                <input className='tags-post-button' value='Add tag' type='button' onClick={addTag} />
+                            </div>
+
+                            <ul>
+                                {
+                                    blogPostTags.map((tag, index) => {
+                                        return (
+                                            <li key={index}>{tag}</li>
+                                        )
+                                    })
+                                }
+                            </ul>
+                        </div>
                     </div>
 
                     {/* this div is the parent component for the post button */}

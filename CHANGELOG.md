@@ -1,5 +1,8 @@
 # CHANGELOG
 
+10 Feb 2025
+- You can now add tags to your blog post
+
 29 Jan 2025
 - You can now update blog posts
 - Fixed: Backend now sends back a response when there are no posts from database
