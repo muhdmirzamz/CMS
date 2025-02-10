@@ -1,8 +1,7 @@
 # CHANGELOG
 
-10 Feb 2025
+11 Feb 2025
 - You can now add tags to your blog post
-- Fixed: Tag textarea does not go to a new line now after pressing enter
 
 29 Jan 2025
 - You can now update blog posts

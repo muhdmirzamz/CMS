@@ -99,7 +99,7 @@
      */
     width: 96%;
 
-    background-color: aqua;
+    /* background-color: aqua; */
 }
 
 .blogpost-tags-post-div {
@@ -108,14 +108,24 @@
     /* aligns text area and button vertically */
     align-items: center;
 
-    background-color: blue;
+    /* background-color: blue; */
 }
 
 .blogpost-tags-text-area {
     resize: none;
 
     width: 30%;
-    height: 10%;
+
+    /* 
+        height as a property does not really affect its height at all 
+        what we do is to set the number of rows as a property in the html
+        and control its font size
+        kind of a workaround
+
+        line-height does not anything either
+    */
+    font-size: 17px;
+    
 
     border-radius: 5px;
 }
@@ -125,6 +135,29 @@
     height: 4vh;
 
     margin-left: 2%;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+.tag {
+    list-style-type: none;
+
+    /* used to adjust the size of the container according to size of content */
+    width: fit-content;
+    height: fit-content;
+
+    /* for the ul to be horizontal, we apply inline block to its li element */
+    display: inline-block;
+
+    padding: 8px;
+    margin: 2px;
+
+    border-radius: 5px;
+
+    background-color: white;
 }
 
 /* =================================== */

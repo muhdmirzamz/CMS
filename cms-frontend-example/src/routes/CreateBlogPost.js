@@ -126,6 +126,7 @@ const CreateBlogPost = () => {
 
                             <div className='blogpost-tags-post-div'>
                                 <textarea 
+                                    rows={1}
                                     className='blogpost-tags-text-area' 
                                     value={blogPostTagText} 
                                     onChange={blogPostTagTextValueChanged}
