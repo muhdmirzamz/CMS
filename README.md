@@ -29,7 +29,14 @@ An example Content Management System using Firebase
 > [!IMPORTANT]
 > You should have a Firebase Realtime Database already setup
 
-Create a file called `const.js`. We will put our Firebase credentials here and reference it in the main file, `app.js`
+## How to install
+
+1. Get the code
+```
+git clone https://github.com/muhdmirzamz/CMS.git
+```
+
+2. Create a file called `const.js` in cms_backend folder. We will put our Firebase credentials here and reference it in the main file, `app.js`
 
 ```javascript
 const apiKey = "" // input your credentials here
@@ -48,17 +55,10 @@ const appId = ""
 module.exports = { apiKey, authDomain, databaseURL, projectId, storageBucket, messagingSenderId, appId }
 ```
 
-## How to install
-
-1. Get the code
-```
-git clone https://github.com/muhdmirzamz/CMS.git
-```
-
-2. Go to the cms_backend folder and `npm install`
-3. Go to the cms-frontend-example folder and `npm install`
-4. Go to cms_backend folder and `node app.js`
-5. Go to the cms-frontend-example folder and `npm start`
+3. Go to the cms_backend folder and `npm install`
+4. Go to the cms-frontend-example folder and `npm install`
+5. Go to cms_backend folder and `node app.js`
+6. Go to the cms-frontend-example folder and `npm start`
 
 <details>
 <summary>Click for things learned</summary>
